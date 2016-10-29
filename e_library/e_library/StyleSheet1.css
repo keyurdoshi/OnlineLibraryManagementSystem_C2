@@ -1,0 +1,70 @@
+﻿body {
+    background-image:url("background1.png");
+}
+
+.div1 {
+    width: 400px;
+    padding-top:50px;
+    height:200px;
+    box-shadow:10px 10px 5px #192629;
+    border:1px solid;
+}
+
+input[type="submit"].button{
+      background-color:#466d78;
+    border: 1px solid black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+    width:20%;
+}
+input[type="submit"].button1{
+      background-color:#466d78;
+    border: 1px solid black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+   float:left;   
+    width:33.33%;
+}
+
+
+.row{
+    height:30px;
+    width:32%;
+}
+.gridview{
+    width:98%;
+    height:80%;
+    padding-top:20%;
+}
+.b1{
+    background-color:#314f57;
+    font-size:20px;
+    padding:5px;
+    border-radius:5px;
+    color:white;
+}
+
+.gb
+{
+    width:100px;
+    height:25px;
+}
+
+.header{
+    color:white;
+    
+    font-size:15px;
+    background:#113742;
+    height:35px;
+}

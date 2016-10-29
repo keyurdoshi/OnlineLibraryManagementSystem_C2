@@ -9,7 +9,8 @@
 <body>
     <center>
     <form id="form1" runat="server">
-    <asp:Label ID="status" runat="server" />
+    <asp:Label ID="status" runat="server" /><br />
+    <asp:Label ID="status1" runat="server" />
      <table>
         <tr>
             <td>Book name:</td>
@@ -24,7 +25,7 @@
         <tr>
             <td>Section Name:</td>
             <td><asp:DropDownList ID="dd_section" runat="server" >
-                <asp:ListItem Value="1" Text="z" />
+                <asp:ListItem Value="1" Text="fiction" />
                 </asp:DropDownList></td>
         </tr>
          <tr>
@@ -58,13 +59,13 @@
         <tr>
             <td>Publisher Name:</td>
             <td><asp:DropDownList ID="dd_publisher_name" runat="server">
-                <asp:ListItem Value="1" Text="y" />
+                <asp:ListItem Value="1" Text="bloomsbury" />
                 </asp:DropDownList></td>
         </tr>
         <tr>
             <td>Seller Name:</td>
             <td><asp:DropDownList ID="dd_seller_name" runat="server">
-                <asp:ListItem Value="1"  Text="x" />
+                <asp:ListItem Value="1"  Text="navneet" />
                 </asp:DropDownList></td>
         </tr>
        </table>

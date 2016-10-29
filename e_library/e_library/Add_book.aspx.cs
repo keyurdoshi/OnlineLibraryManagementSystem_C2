@@ -50,7 +50,10 @@ namespace e_library
                     cmd.Parameters.AddWithValue("@section_id", dd_section.SelectedValue);
                     cmd.Parameters.AddWithValue("@edition", tb_edition.Text);
                     int added = cmd.ExecuteNonQuery();
-                    
+                  //  query = "update [dbo].[section] SET no_of_books=no_of_books+1 WHERE section_id=@id";
+                   // cmd = new SqlCommand(query, con);
+                    //cmd.Parameters.AddWithValue("@id", dd_section.SelectedValue);
+                  // added = cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception err)

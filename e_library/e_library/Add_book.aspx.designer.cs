@@ -31,6 +31,15 @@ namespace e_library {
         protected global::System.Web.UI.WebControls.Label status;
         
         /// <summary>
+        /// status1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label status1;
+        
+        /// <summary>
         /// tb_book_name control.
         /// </summary>
         /// <remarks>

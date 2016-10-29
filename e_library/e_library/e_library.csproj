@@ -98,6 +98,7 @@
     <Content Include="Add_pub.aspx" />
     <Content Include="Add_seller.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="issue_book_staff.aspx" />
     <Content Include="Login_user.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -116,8 +117,10 @@
       <DependentUpon>library_db.mdf</DependentUpon>
     </Content>
     <Content Include="Register_User.aspx" />
+    <Content Include="return_book.aspx" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
+    <Content Include="StyleSheet1.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -151,6 +154,13 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="issue_book_staff.aspx.cs">
+      <DependentUpon>issue_book_staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="issue_book_staff.aspx.designer.cs">
+      <DependentUpon>issue_book_staff.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login_user.aspx.cs">
       <DependentUpon>Login_user.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -165,6 +175,13 @@
     </Compile>
     <Compile Include="Register_User.aspx.designer.cs">
       <DependentUpon>Register_User.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="return_book.aspx.cs">
+      <DependentUpon>return_book.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="return_book.aspx.designer.cs">
+      <DependentUpon>return_book.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
