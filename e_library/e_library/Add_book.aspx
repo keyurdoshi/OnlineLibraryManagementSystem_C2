@@ -25,8 +25,8 @@
         <tr>
             <td>Section Name:</td>
             <td><asp:DropDownList ID="dd_section" runat="server" >
-                <asp:ListItem Value="1" Text="fiction" />
-                </asp:DropDownList></td>
+                </asp:DropDownList>
+                </td>
         </tr>
          <tr>
              <td>Language:</td>
@@ -59,13 +59,13 @@
         <tr>
             <td>Publisher Name:</td>
             <td><asp:DropDownList ID="dd_publisher_name" runat="server">
-                <asp:ListItem Value="1" Text="bloomsbury" />
+               
                 </asp:DropDownList></td>
         </tr>
         <tr>
             <td>Seller Name:</td>
             <td><asp:DropDownList ID="dd_seller_name" runat="server">
-                <asp:ListItem Value="1"  Text="navneet" />
+                
                 </asp:DropDownList></td>
         </tr>
        </table>
