@@ -25,10 +25,12 @@ namespace e_library
                 reader = cmd.ExecuteReader();
                 if (reader.Read() == false)
                 {
-                    status.Text = "Invalid Username or Password.";
+                    status.Text = "Invalid Email or Password.";
                 }
                 else
-                {
+                { 
+                    if (reader[7].Equals(1) )
+                        Response.Redirect("~/Login_user.aspx?msg=You are blocked");
                     Session["user"] = tb_email.Text;
                     Response.Redirect("Home.aspx");
                 }

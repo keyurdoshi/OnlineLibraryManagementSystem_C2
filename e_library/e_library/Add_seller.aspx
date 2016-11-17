@@ -5,15 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="StyleSheet1.css" rel="stylesheet" type="text/css" runat="server" />
 </head>
 <body>
     <form id="form1" runat="server">
     <center>
-
+    
     <h1>Seller Registration form</h1>
     <asp:Label ID="status" runat="server" />
-    <table>
        
+         <table>
+  
         <tr>
             <td>Seller Name:</td>
             <td><asp:TextBox ID="tb_name" runat="server" /></td>
@@ -44,7 +46,7 @@
         </table>
          </center>     
         
-        <asp:Button ID="B_regpub" runat="server" Text="Submit" OnClick="B_click" />
+        <center> <asp:HyperLink runat="server" ID="hp" Text="Back" NavigateUrl="~/Seller_admin.aspx" />&nbsp&nbsp&nbsp&nbsp<asp:Button ID="B_regpub" runat="server" Text="Submit" OnClick="B_click" /></center>
          </form>
 </body>
 </html>

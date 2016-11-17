@@ -36,7 +36,7 @@ namespace e_library
                 cmd.Parameters.AddWithValue("@email", tb_email.Text);
                 int exists = (int)cmd.ExecuteScalar();
                 if (exists > 0)
-                    status.Text = "Username already exists";
+                    status.Text = "Email already exists";
                 else
                 {
                     query = "insert into [dbo].[member] (member_name,email,password,phone_no,branch,Category) VALUES(@name,@email,@password,@contact,@branch,@category)";
@@ -48,8 +48,7 @@ namespace e_library
                     cmd.Parameters.AddWithValue("@branch", branch_dd.SelectedItem.Text);
                     cmd.Parameters.AddWithValue("@category", category_dd.SelectedItem.Text);
                     exists = cmd.ExecuteNonQuery();
-
-                    status.Text = "Inserted ";
+                    Response.Redirect("~/Login_user.aspx");
                 }
             }
             catch (Exception err)

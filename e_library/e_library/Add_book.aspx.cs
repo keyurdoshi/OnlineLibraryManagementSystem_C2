@@ -14,33 +14,35 @@ namespace e_library
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
-            SqlConnection con = new SqlConnection(constr);
-            string query = "select seller_id,seller_name from [dbo].[seller]";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            dd_seller_name.DataSource = cmd.ExecuteReader();
-            dd_seller_name.DataTextField = "seller_name";
-            dd_seller_name.DataValueField = "seller_id";
-            dd_seller_name.DataBind();
-            con.Close();
-            con.Open();
-              query = "select pub_id,pub_name from [dbo].[publisher]";
-                   cmd = new SqlCommand(query, con);
-                   dd_publisher_name.DataSource = cmd.ExecuteReader();
-                   dd_publisher_name.DataTextField = "pub_name";
-                   dd_publisher_name.DataValueField = "pub_id";
-                     dd_publisher_name.DataBind();
-            con.Close();
-            con.Open();
-            query = "select section_id,section_name from [dbo].[section]";
+            if (!IsPostBack)
+            {
+                string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
+                SqlConnection con = new SqlConnection(constr);
+                string query = "select seller_id,seller_name from [dbo].[seller] where delete_status=0";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                dd_seller_name.DataSource = cmd.ExecuteReader();
+                dd_seller_name.DataTextField = "seller_name";
+                dd_seller_name.DataValueField = "seller_id";
+                dd_seller_name.DataBind();
+                con.Close();
+                con.Open();
+                query = "select pub_id,pub_name from [dbo].[publisher] where delete_status=0";
+                cmd = new SqlCommand(query, con);
+                dd_publisher_name.DataSource = cmd.ExecuteReader();
+                dd_publisher_name.DataTextField = "pub_name";
+                dd_publisher_name.DataValueField = "pub_id";
+                dd_publisher_name.DataBind();
+                con.Close();
+                con.Open();
+                query = "select section_id,section_name from [dbo].[section]";
                 cmd = new SqlCommand(query, con);
                 dd_section.DataSource = cmd.ExecuteReader();
                 dd_section.DataTextField = "section_name";
                 dd_section.DataValueField = "section_id";
                 dd_section.DataBind();
-            con.Close();
-           
+                con.Close();
+            }
            
         }
         protected void b_click(object sender, EventArgs e)
@@ -77,7 +79,7 @@ namespace e_library
                     cmd.Parameters.AddWithValue("@section_name", dd_section.SelectedItem.Text);
                     cmd.Parameters.AddWithValue("@edition", tb_edition.Text);
                     int added = cmd.ExecuteNonQuery();
-                    status.Text = "inserted";
+                    status.Text = "Book is inserted";
                 }
             }
             catch (Exception err)

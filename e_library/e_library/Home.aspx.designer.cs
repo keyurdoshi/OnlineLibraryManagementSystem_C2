@@ -40,15 +40,6 @@ namespace e_library {
         protected global::System.Web.UI.WebControls.Label l;
         
         /// <summary>
-        /// status control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label status;
-        
-        /// <summary>
         /// qty control.
         /// </summary>
         /// <remarks>
@@ -103,6 +94,15 @@ namespace e_library {
         protected global::System.Web.UI.WebControls.Button account;
         
         /// <summary>
+        /// accountview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DetailsView accountview;
+        
+        /// <summary>
         /// Current control.
         /// </summary>
         /// <remarks>
@@ -139,13 +139,13 @@ namespace e_library {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl search;
         
         /// <summary>
-        /// lserach control.
+        /// lsearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lserach;
+        protected global::System.Web.UI.WebControls.Label lsearch;
         
         /// <summary>
         /// tb_search control.
@@ -173,6 +173,24 @@ namespace e_library {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button b;
+        
+        /// <summary>
+        /// l_search control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label l_search;
+        
+        /// <summary>
+        /// status control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label status;
         
         /// <summary>
         /// historygridview control.
@@ -209,5 +227,23 @@ namespace e_library {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView homegridview;
+        
+        /// <summary>
+        /// contact_us1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contact_us1;
+        
+        /// <summary>
+        /// faq1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl faq1;
     }
 }

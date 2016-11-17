@@ -97,16 +97,20 @@
     <Content Include="Add_book.aspx" />
     <Content Include="Add_pub.aspx" />
     <Content Include="Add_seller.aspx" />
+    <Content Include="Admin.aspx" />
     <Content Include="book_admin.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="HomeAdmin.aspx" />
     <Content Include="issue_book_staff.aspx" />
+    <Content Include="login_admin.aspx" />
     <Content Include="Login_user.aspx" />
     <Content Include="member_admin.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="transaction.aspx" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -122,10 +126,12 @@
     <Content Include="publisher_admin.aspx" />
     <Content Include="Register_User.aspx" />
     <Content Include="return_book.aspx" />
+    <Content Include="sample.aspx" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Seller_admin.aspx" />
     <Content Include="StyleSheet1.css" />
+    <Content Include="StyleSheet2.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -151,6 +157,13 @@
     </Compile>
     <Compile Include="Add_seller.aspx.designer.cs">
       <DependentUpon>Add_seller.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="book_admin.aspx.cs">
       <DependentUpon>book_admin.aspx</DependentUpon>
@@ -179,6 +192,13 @@
     </Compile>
     <Compile Include="issue_book_staff.aspx.designer.cs">
       <DependentUpon>issue_book_staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login_admin.aspx.cs">
+      <DependentUpon>login_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login_admin.aspx.designer.cs">
+      <DependentUpon>login_admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login_user.aspx.cs">
       <DependentUpon>Login_user.aspx</DependentUpon>
@@ -216,12 +236,33 @@
     <Compile Include="return_book.aspx.designer.cs">
       <DependentUpon>return_book.aspx</DependentUpon>
     </Compile>
+    <Compile Include="sample.aspx.cs">
+      <DependentUpon>sample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sample.aspx.designer.cs">
+      <DependentUpon>sample.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Seller_admin.aspx.cs">
       <DependentUpon>Seller_admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seller_admin.aspx.designer.cs">
       <DependentUpon>Seller_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="transaction.aspx.cs">
+      <DependentUpon>transaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="transaction.aspx.designer.cs">
+      <DependentUpon>transaction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

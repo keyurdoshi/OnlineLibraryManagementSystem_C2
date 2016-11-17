@@ -121,6 +121,15 @@ namespace e_library {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator rev_email;
         
         /// <summary>
+        /// hp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hp;
+        
+        /// <summary>
         /// B_regpub control.
         /// </summary>
         /// <remarks>

@@ -70,8 +70,22 @@ namespace e_library
                             status1.Text = "already issued 3 books";
                         else
                         {
-                            query = "insert into status (email,book_id) VALUES(@email,@id)";
+                            con.Close();
+                            con.Open();
+                            query = "select book_name,author_name from [dbo].[books] where book_id=@id";
                             cmd = new SqlCommand(query, con);
+                            cmd.Parameters.AddWithValue("@id", tb_book_id.Text);
+                            SqlDataReader reader;
+                            reader = cmd.ExecuteReader();
+                            reader.Read();
+                            string book_name = reader["book_name"].ToString(); ;
+                            string author_name = reader["author_name"].ToString() ;
+                            con.Close();
+                            con.Open();
+                            query = "insert into status (book_name,author_name,email,book_id) VALUES(@book_name,@author_name,@email,@id)";
+                            cmd = new SqlCommand(query, con);
+                            cmd.Parameters.AddWithValue("@book_name", book_name);
+                            cmd.Parameters.AddWithValue("@author_name", author_name);
                             cmd.Parameters.AddWithValue("@email", tb_member_email_id.Text);
                             cmd.Parameters.AddWithValue("@id", tb_book_id.Text);
                             int x = cmd.ExecuteNonQuery();

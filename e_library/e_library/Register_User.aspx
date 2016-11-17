@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    
+<link href="StyleSheet1.css" rel="stylesheet" type="text/css" runat="server" />
 </head>
 <body>
     <center>
@@ -49,7 +51,7 @@
         </tr>
        
         </table>
-        <asp:Button ID="Button1_register" runat="server" Text="Register Me" OnClick="Button1_register_Click" />
+        <asp:Button ID="Button1_register" runat="server" style="width:130px;height:30px; background-color:antiquewhite;" Text="Register Me" OnClick="Button1_register_Click" />
         <br />
         <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
     </form>

@@ -11,30 +11,42 @@ namespace e_library
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["admin"] == null)
+                Response.Redirect("~/login_admin.aspx?msg=Please log in");
 
         }
+        protected void signout_Click(object sender, EventArgs e)
+        {
 
+            Session.Abandon();
+            Session.Clear();
+            Response.Redirect("~/login_admin.aspx?msg=Logged out");
+            
+        }
         protected void book_click(object sender, EventArgs e)
         {
             Response.Redirect("~/book_admin.aspx");
         }
-
         protected void publisher_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/publisher_admin.aspx");
         }
-
         protected void seller_click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Seller_admin.aspx");
         }
-
         protected void user_click(object sender, EventArgs e)
         {
+            Response.Redirect("~/member_admin.aspx");
 
         }
 
         protected void section_click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void transaction_click(object sender, EventArgs e)
         {
 
         }

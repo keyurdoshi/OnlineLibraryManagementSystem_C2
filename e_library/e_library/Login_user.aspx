@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
          <div class="div1">
         <table>
-            <h1 style="background-color:white">Login</h1>
+            <h1 style="background-color:white">&nbsp&nbsp Login</h1>
             <asp:Label CssClass="l" ID="status" runat="server" />
             <tr>
                 <td>
@@ -36,7 +36,7 @@
                 </td>
             </tr>
         </table>
-            <asp:Button CssClass="b1" ID="button_login" runat="server" Text="Login" OnClick="Login_Click"></asp:Button>
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <asp:Button CssClass="b1" ID="button_login" runat="server" style="width:130px;height:30px; background-color:antiquewhite;" Text="Login" OnClick="Login_Click"></asp:Button>
      <br />   <asp:HyperLink ID="link_regi" runat="server" NavigateUrl="~/Register_user.aspx" Text="Create Account" />
    
               </div>  </form>

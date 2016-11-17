@@ -20,23 +20,44 @@ namespace e_library
                 Response.Redirect("~/Login_user.aspx?msg=Please log in");
             else
             {
-                               search.Visible = false;
+                faq1.Visible = false;
+                contact_us1.Visible = false;
+                status.Visible = false;
+                search.Visible = false;
+                Current.Visible = false;
+                warning.Visible = false;
+                history.Visible = false;
+                accountview.Visible = true;
+                historygridview.Visible = false;
+                homegridview.Visible = false;
+                bookgridview.Visible = false;
                 l.Text = Session["user"].ToString();
 
             }
         }
         protected void account_click(object sender,EventArgs e)
         {
+            faq1.Visible = false;
+            contact_us1.Visible = false;
+            status.Visible = false;
+            search.Visible = false;
+            Current.Visible = false;
+            warning.Visible = false;
+            history.Visible = false;
+            accountview.Visible = true;
+            historygridview.Visible = false;
+            homegridview.Visible = false;
+            bookgridview.Visible = false;
             string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(constr);
             try
             {
                 con.Open();
-                string query = "select member_id,member_name,branch from [dbo].[member] where email=@email";
+                string query = "select member_id,member_name,email,branch,phone_no from [dbo].[member] where email=@email";
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@email", Session["user"].ToString());
-               
-
+                cmd.Parameters.AddWithValue("@email",Session["user"].ToString());
+                accountview.DataSource = cmd.ExecuteReader();
+                accountview.DataBind();
             }
             catch (Exception err)
             {
@@ -46,37 +67,28 @@ namespace e_library
             {
                 con.Close();
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
         protected void book_click(object sender, EventArgs e)
         {
-             search.Visible = true;
+            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
+            SqlConnection con = new SqlConnection(constr);
+            bookdetailview.Visible = false;
+            status.Visible = false;
+            faq1.Visible = false;
+            contact_us1.Visible = false;
+            search.Visible = true;
+            accountview.Visible = false;
             Current.Visible = false;
             warning.Visible = false;
             history.Visible = false;
             historygridview.Visible = false;
             homegridview.Visible = false;
             bookgridview.Visible = true;
-            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
-            SqlConnection con = new SqlConnection(constr);
+           
             try
             {
                 con.Open();
-                string query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books]";
+                string query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] where delete_status=0";
                 SqlCommand cmd = new SqlCommand(query, con);
                 bookgridview.DataSource = cmd.ExecuteReader();
                 bookgridview.DataBind();
@@ -93,8 +105,11 @@ namespace e_library
         }
         protected void bookdetail_click(object sender, EventArgs e)
         {
-            
+            faq1.Visible = false;
+            contact_us1.Visible = false;
+            status.Visible = false;
             search.Visible =false;
+            accountview.Visible = false;
             Current.Visible = false;
             warning.Visible = false;
             history.Visible = false;
@@ -132,23 +147,16 @@ namespace e_library
             }
 
         }
-
-
         protected void issue_click(Object sender, EventArgs e)
         {
             search.Visible = true;
-            //Get the button that raised the event
+            bookgridview.Visible = true;
+            accountview.Visible = false;
+            homegridview.Visible = false;
             Button btn = (Button)sender;
 
-            //Get the row that contains this button
+
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-            //it will get value of the first column in a selected row
-            //label with id status is defined above the button which will display contain of first column
-
-            //find the control with id "tb" and store it as Textbox
-            //here id "tb" is defined in template..<asp:texbox id="tb"/>
-
-            //label with id temp will display the value which is in the textbox
             string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(constr);
             try
@@ -159,14 +167,18 @@ namespace e_library
                 cmd.Parameters.AddWithValue("@id", (string)gvr.Cells[0].Text);
                 cmd.Parameters.AddWithValue("@email", Session["user"].ToString());
                 int count = (int)cmd.ExecuteScalar();
-                if (count == 0)//book is not issued already
+                if (count == 0)
                 {
                     query = "select count(*) from status where email=@email AND actual_date_of_return IS NULL";
                     cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@email", Session["user"].ToString());
                     count = (int)cmd.ExecuteScalar();
                     if (count == 3)
-                        status.Text = "already issued 3 books";
+                    {
+                        status.Visible = true;
+
+                        status.Text = "Already issued 3 books";
+                    }
                     else
                     {
                         query = "insert into status (email,book_id,book_name,author_name) VALUES(@email,@id,@name,@authorname)";
@@ -176,16 +188,22 @@ namespace e_library
                         cmd.Parameters.AddWithValue("@name", (string)gvr.Cells[1].Text);
                         cmd.Parameters.AddWithValue("@authorname", (string)gvr.Cells[2].Text);
                         int x = cmd.ExecuteNonQuery();
-                        status.Text = "Inserted";
+
                         query = "UPDATE [dbo].[books] SET total_qty=total_qty-1 WHERE book_id=@id";
                         cmd = new SqlCommand(query, con);
                         cmd.Parameters.AddWithValue("@id", (string)gvr.Cells[0].Text);
                         x = cmd.ExecuteNonQuery();
+                        Label label = (Label)gvr.Cells[10].FindControl("l");
+                        label.Visible = true;
+                        Button b = (Button)gvr.Cells[10].FindControl("issue");
+                        b.Visible = false;
                     }
                 }
                 else
-                    status.Text = "Can't be issued";
-
+                { 
+                    status.Visible = true;
+                    status.Text = "Same book is already issued";
+                  }
             }
             catch (Exception err)
             {
@@ -198,12 +216,12 @@ namespace e_library
 
 
         }
-
-
-
         protected void home_click(object sender, EventArgs e)
         {
-
+            faq1.Visible = false;
+            contact_us1.Visible = false;
+            status.Visible = false;
+            accountview.Visible = false;
             Current.Visible = true;
             warning.Visible = true;
             history.Visible = true;
@@ -216,7 +234,13 @@ namespace e_library
         }
         protected void return_click(object sender, EventArgs e)
         {
+            Current.Visible = true;
+            warning.Visible = true;
+            history.Visible = true;
+            status.Visible = false;
             bookdetailview.Visible = false;
+            accountview.Visible = false;
+            homegridview.Visible = true;
             Button btn = (Button)sender;
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
@@ -233,7 +257,10 @@ namespace e_library
                 cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", (string)gvr.Cells[0].Text);
                 int x = cmd.ExecuteNonQuery();
-                status.Text = "returned";
+                Label label1 = (Label)gvr.Cells[6].FindControl("l1");
+                label1.Visible = true;
+                Button b = (Button)gvr.Cells[6].FindControl("return");
+                b.Visible = false;
 
             }
             catch (Exception err)
@@ -248,10 +275,10 @@ namespace e_library
 
 
         }
-
         protected void contactus_click(object sender, EventArgs e)
         {
-            
+            status.Visible = false;
+            accountview.Visible = false;
             search.Visible = false;
             bookgridview.Visible = false;
             homegridview.Visible = false;
@@ -259,11 +286,13 @@ namespace e_library
             Current.Visible = false;
             warning.Visible = false;
             history.Visible = false;
+            faq1.Visible = false;
+            contact_us1.Visible = true;
         }
-
         protected void faq_click(object sender, EventArgs e)
         {
-            
+            status.Visible = false;
+            accountview.Visible = false;
             search.Visible = false;
             Current.Visible = false;
             warning.Visible = false;
@@ -271,15 +300,20 @@ namespace e_library
             bookgridview.Visible = false;
             homegridview.Visible = false;
             historygridview.Visible = false;
+            contact_us1.Visible = false;
+            faq1.Visible = true;
         }
-
         protected void warning_click(object sender, EventArgs e)
         {
+            faq1.Visible = false;
+            contact_us1.Visible = false;
+            status.Visible = false;
             search.Visible = false;
- 
+            accountview.Visible = false;
             historygridview.Visible = false;
             bookgridview.Visible = false;
             homegridview.Visible = false;
+
             Current.Visible = true;
             warning.Visible = true;
             history.Visible = true;
@@ -307,12 +341,14 @@ namespace e_library
             }
 
         }
-
         protected void history_click(object sender, EventArgs e)
         {
+            faq1.Visible = false;
+            contact_us1.Visible = false;
             search.Visible = false;;
-
+            status.Visible = false;
             bookdetailview.Visible = false;
+            accountview.Visible = false;
             Current.Visible = true;
             warning.Visible = true;
             history.Visible = true;
@@ -341,14 +377,15 @@ namespace e_library
             }
 
         }
-
         protected void current_Click(object sender, EventArgs e)
         {
-            
+            faq1.Visible = false;
+            contact_us1.Visible = false;
+            status.Visible = false;
             search.Visible = false;
             bookgridview.Visible = false;
             homegridview.Visible = true;
-
+            accountview.Visible = false;
             Current.Visible = true;
             warning.Visible = true;
             history.Visible = true;
@@ -377,7 +414,6 @@ namespace e_library
             }
 
         }
-
         protected void signout_Click(object sender, EventArgs e)
         {
 
@@ -386,9 +422,12 @@ namespace e_library
 
             Response.Redirect("~/Login_user.aspx?msg=Logged out");
         }
-
         protected void b_Search(object sender, EventArgs e)
-        { int f = 0;
+        {   int f = 0;
+            faq1.Visible = false;
+            contact_us1.Visible = false;
+            accountview.Visible = false;
+            l_search.Visible = false;
             search.Visible = true;
             Current.Visible = false;
             warning.Visible = false;
@@ -397,77 +436,86 @@ namespace e_library
             homegridview.Visible = false;
             bookgridview.Visible = true;
 
-            string query =null;
+
+            string query = null;
             if (dd_search.SelectedItem.Text == "Book ID")
             {
-                 query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE book_id=@value";
+                query = " select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,seller_name,mrp,total_qty,Edition from [dbo].[books] where delete_status=0 AND book_id=@value";
                 f = 1;
             }
             else if (dd_search.SelectedItem.Text == "Book Name")
             {
-                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE book_name LIKE '%'+ @value + '%'";
+                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,seller_name,mrp,total_qty,Edition from [dbo].[books] where delete_status=0 AND book_name LIKE '%'+ @value + '%'";
                 f = 0;
             }
             else if (dd_search.SelectedItem.Text == "Author Name")
             {
-                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE author_name LIKE '%'+ @value + '%'";
+                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,seller_name,mrp,total_qty,Edition from [dbo].[books] where delete_status=0 AND author_name LIKE '%'+ @value + '%'";
                 f = 0;
             }
             else if (dd_search.SelectedItem.Text == "Section Name")
             {
-                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE section_name LIKE '%'+ @value + '%'";
+                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,seller_name,mrp,total_qty,Edition from [dbo].[books] where delete_status=0 AND section_name LIKE '%'+ @value + '%'";
                 f = 0;
             }
             else if (dd_search.SelectedItem.Text == "Publisher Name")
             {
-                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE pub_name LIKE '%'+ @value + '%'";
+                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,seller_name,mrp,total_qty,Edition from [dbo].[books] where delete_status=0 AND pub_name LIKE '%'+ @value + '%'";
                 f = 0;
             }
             else if (dd_search.SelectedItem.Text == "Description")
             {
-                 query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE description LIKE '%'+ @value + '%'";
+                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,seller_name,mrp,total_qty,Edition from [dbo].[books] where delete_status=0 AND description LIKE '%'+ @value + '%'";
                 f = 0;
             }
             else if (dd_search.SelectedItem.Text == "Language")
             {
-                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE language LIKE '%'+ @value + '%'";
+                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE  delete_status=0 AND language LIKE '%'+ @value + '%'";
                 f = 0;
 
             }
-            else if(dd_search.SelectedItem.Text =="Publisher Year")
+            else if (dd_search.SelectedItem.Text == "Publisher Year")
             {
-                 query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE pub_yaer=@value";
+                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,seller_name,mrp,total_qty,Edition from [dbo].[books] where delete_status=0 AND pub_yaer=@value";
                 f = 1;
             }
-            else if(dd_search.SelectedItem.Text =="Edition")
+            else if (dd_search.SelectedItem.Text == "Edition")
             {
-                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,Edition from [dbo].[books] WHERE  Edition=@value";
+                query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,seller_name,mrp,total_qty,Edition from [dbo].[books] where delete_status=0 AND Edition=@value";
                 f = 1;
             }
 
             string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(constr);
+
             try
             {
+
                 con.Open();
-                 SqlCommand cmd = new SqlCommand(query, con);
-                if (f == 0)
+
+                if (tb_search.Text.Length == 0)
+                {
+
+                    query = "select book_id,book_name,author_name,section_name,description,length,language,pub_year,pub_name,seller_name,mrp,total_qty,Edition from [dbo].[books] where delete_status=0";
+                }
+                SqlCommand cmd = new SqlCommand(query, con);
+                if (f == 0 && tb_search.Text.Length != 0)
                     cmd.Parameters.AddWithValue("@value", tb_search.Text.ToLower());
                 else
                     cmd.Parameters.AddWithValue("@value", tb_search.Text);
-                bookgridview.DataSource = cmd.ExecuteReader();
+              
+               bookgridview.DataSource = cmd.ExecuteReader();
                 bookgridview.DataBind();
 
             }
             catch (Exception err)
             {
-                status.Text = err.Message;
+                l_search.Visible = true;
             }
             finally
             {
                 con.Close();
             }
-
         }
        
     }
