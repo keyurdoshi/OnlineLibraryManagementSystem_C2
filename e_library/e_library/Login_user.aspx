@@ -12,7 +12,7 @@
 
  
     <center>
-        
+        <h1>Library Management System</h1>
     <form id="form1" runat="server">
          <div class="div1">
         <table>

@@ -16,7 +16,7 @@
         <asp:Button ID="b2" CssClass="badmin" Text="Publishers" runat="server" OnClick="publisher_Click"  />
         <asp:Button ID="b3" CssClass="badmin" Text="Sellers" runat="server" OnClick="seller_click" />
         <asp:Button ID="b4" CssClass="badmin" Text="Users" runat="server" OnClick="user_click" />
-       
+       <asp:Button ID="b5" CssClass="badmin" Text="Transactions" runat="server" OnClick="trans_click" />
     </div>
         
     </form>

@@ -16,7 +16,7 @@ namespace e_library
         {
             if (!IsPostBack)
             {
-                string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
+                string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
                 SqlConnection con = new SqlConnection(constr);
                 string query = "select seller_id,seller_name from [dbo].[seller] where delete_status=0";
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -47,7 +47,7 @@ namespace e_library
         }
         protected void b_click(object sender, EventArgs e)
         {
-            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
+            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(constr);
             string query = "select count(*) from [dbo].[books] where book_name=@name";
             SqlCommand cmd = new SqlCommand(query, con);

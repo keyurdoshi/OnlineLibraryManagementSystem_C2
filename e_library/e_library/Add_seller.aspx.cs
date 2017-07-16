@@ -19,7 +19,7 @@ namespace e_library
 
         protected void B_click(object sender, EventArgs e)
         {
-            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
+            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(constr);
             string query = "select count(*) from [dbo].[seller] where seller_name=@name AND city=@city";
             SqlCommand cmd = new SqlCommand(query, con);

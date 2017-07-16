@@ -23,6 +23,10 @@ namespace e_library
             Response.Redirect("~/login_admin.aspx?msg=Logged out");
             
         }
+        protected void trans_click(object sender,EventArgs e)
+        {
+            Response.Redirect("~/transaction.aspx");
+        }
         protected void book_click(object sender, EventArgs e)
         {
             Response.Redirect("~/book_admin.aspx");

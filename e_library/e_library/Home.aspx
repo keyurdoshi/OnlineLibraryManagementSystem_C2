@@ -28,19 +28,13 @@
         <asp:DetailsView ID="accountview" CssClass="mydatagrid" PagerStyle-CssClass="pager" RowStyle-CssClass="rows" HeaderStyle-CssClass="header" AutoGenerateRows="false" runat="server" >
             <Fields>
                 <asp:BoundField DataField="member_id" HeaderText="Member Id" ReadOnly="true" />
-                <asp:BoundField DataField="member_name" HeaderText="Member Name" ReadOnly="true" />
+                <asp:BoundField DataField="member_name" HeaderText="Member Name"  />
                 <asp:BoundField DataField="email" HeaderText="Email" ReadOnly="true" />
-                <asp:TemplateField HeaderText="Branch">
-                   <ItemTemplate>
-                       <asp:Label ID="l" runat="server" Text='<% #Eval("Branch") %>' />
-                   </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:Label ID="l" runat="server" Text='<% #Eval("Branch") %>' />
-                        <asp:TextBox ID="tb" runat="server" Text='<% #Eval("Branch") %>' />
-                    </EditItemTemplate>
-                    
-                </asp:TemplateField>
+                <asp:BoundField DataField="branch" HeaderText="Branch" ReadOnly="true" />
+                <asp:BoundField DataField="category" HeaderText="Category" ReadOnly="true" />
                 <asp:BoundField DataField="phone_no" HeaderText="Phone No" ReadOnly="true" />
+               
+
             </Fields>
         </asp:DetailsView>
 
@@ -76,7 +70,7 @@
         <br /><br />
         
        
-         <asp:GridView CssClass="mydatagrid" PagerStyle-CssClass="pager" RowStyle-CssClass="rows" HeaderStyle-CssClass="header" ID="historygridview" runat="server" AutoGenerateColumns="false"  >
+        <asp:GridView CssClass="mydatagrid" PagerStyle-CssClass="pager" RowStyle-CssClass="rows" HeaderStyle-CssClass="header" ID="historygridview" runat="server" AutoGenerateColumns="false"  >
             <Columns>
                 <asp:BoundField  DataField="book_id" HeaderText="Book ID"  />
                 <asp:BoundField  DataField="book_name" HeaderText="Book name"   />
@@ -91,7 +85,7 @@
                 </Columns>
           </asp:GridView>
 
-          <asp:GridView   CssClass="mydatagrid" PagerStyle-CssClass="pager" RowStyle-CssClass="rows" HeaderStyle-CssClass="header" ID="bookgridview" runat="server" AutoGenerateColumns="false"  >
+        <asp:GridView   CssClass="mydatagrid" PagerStyle-CssClass="pager" RowStyle-CssClass="rows" HeaderStyle-CssClass="header" ID="bookgridview" runat="server" AutoGenerateColumns="false"  >
             <Columns>
                 <asp:BoundField  DataField="book_id" HeaderText="Book ID"  />
                 <asp:BoundField  DataField="book_name" HeaderText="Book name"  />
@@ -151,7 +145,7 @@
         </asp:GridView>     
 
 
-                <div id="contact_us1" runat="server" >
+        <div id="contact_us1" runat="server" >
             Name : Keyur Doshi<br />
             E-mail : kdoshi96@gmail.com <br />
             Phone no. : 8511410091<br />

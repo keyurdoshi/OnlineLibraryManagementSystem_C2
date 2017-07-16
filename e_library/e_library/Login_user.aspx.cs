@@ -12,7 +12,7 @@ namespace e_library
 
         protected void Login_Click(object sender, EventArgs e)
         {
-            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
+            string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ASUS\Source\Repos\OnlineLibraryManagementSystem_C2\e_library\e_library\App_Data\library_db.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(constr);
             string selectSQL = "select * from [dbo].[member] where email=@email AND password=@password";
             SqlCommand cmd = new SqlCommand(selectSQL, con);
